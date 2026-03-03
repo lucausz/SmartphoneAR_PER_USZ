@@ -1,7 +1,6 @@
 # Rapport de TP : Réalité Augmentée sur Smartphone (ARCore)
 
-**Étudiants :** [Ton Nom] & [Nom de ton binôme]  
-**Lien du dépôt Git :** [Insérer le lien public GitHub/GitLab ici]  
+**Étudiants :** Brice Perrout et Luca Uszynski    
 
 ---
 
@@ -28,7 +27,7 @@ Pour implémenter cette interaction, nous avons strictement utilisé le **New In
 * **Le filtrage :** Le rayon est configuré pour ne réagir qu'aux surfaces physiques détectées (`TrackableType.PlaneWithinPolygon`).
 * **L'action :** Si le rayon intersecte un plan, nous récupérons les coordonnées exactes de l'impact (`Pose`) pour instancier le plateau à cet endroit, ou le déplacer s'il existe déjà.
 
-> 📸 **[Insérer ici la CAPTURE 1]** > *Légende : Détection des plans horizontaux (maillage bleu) et placement du plateau de jeu interactif.*
+
 
 ---
 
@@ -41,8 +40,7 @@ Pour anticiper les interactions de déplacement (Partie 5), nous avons dû conto
 * **Le Parent (`Cat_Parent`) :** Géré à 100% par le moteur de tracking AR. Il reste ancré sur le marqueur physique.
 * **L'Enfant (`Cat_3D`) :** Contient le modèle 3D du chat et le composant `Animator`. C'est cet objet que nous manipulons via nos scripts pour le désolidariser visuellement du marqueur sans briser le tracking.
 
-> 📸 **[Insérer ici la CAPTURE 2]**
-> *Légende : Instanciation du modèle 3D du chat sur le marqueur image cible.*
+
 
 ---
 
@@ -61,28 +59,15 @@ Pour répondre au critère d'extension "UI en Réalité Augmentée", nous avons 
 * **Rotation fluide :** Pour un rendu naturel, le chat s'oriente dans sa direction de marche grâce à la fonction mathématique `Quaternion.Slerp` combinée à `Quaternion.LookRotation`.
 * **Animation :** Le script communique en permanence avec l' `Animator` du chat. Dès que la magnitude du joystick dépasse 0.05, le paramètre booléen `isWalking` passe à `true`, déclenchant l'animation de marche. Il repasse à `false` lors de l'arrêt ou si le chat s'éloigne trop du plateau.
 
-> 📸 **[Insérer ici la CAPTURE 3]**
-> *Légende : Déplacement libre du chat sur le GameBoard via le joystick tactile, avec déclenchement de l'animation.*
+
 
 ---
 
 ## IV. Guide d'Utilisation
 
 1. Lancer l'application et autoriser l'accès à la caméra.
-2. Scanner l'environnement en effectuant de lents mouvements avec le smartphone.
-3. Tapoter sur une zone de détection (grille) pour instancier le plateau de jeu.
-4. Présenter l'image cible devant la caméra pour faire apparaître le chat.
-5. Approcher le chat à moins de 40 cm du plateau virtuel.
-6. Utiliser le joystick en bas à droite de l'écran pour diriger et animer le chat sur le tapis.
-
-> 🎥 **[Insérer ici le lien YouTube de votre démonstration vidéo si vous en avez fait une]**
-
----
-
-## V. Organisation et Répartition du travail
-
-Afin de mener à bien ce projet de manière efficace, nous nous sommes réparti les tâches techniques tout en collaborant sur le game design global :
-
-* **[Ton Nom] :** Configuration initiale d'AR Foundation (Project Setup), paramétrage de la détection d'images (Partie 2), et écriture du script exploitant l'`EnhancedTouch` pour le placement du GameBoard (Partie 3).
-* **[Nom de ton binôme] :** Implémentation de la logique de déplacement via l'UI Joystick, structuration de l'architecture Parent/Enfant pour libérer le mouvement, et intégration des animations via l'`Animator` (Parties 4 & 5).
-* **Travail conjoint :** Conception du scénario, tests de déploiement (Build & Run) sur smartphone Android, phase de débogage et rédaction de ce compte rendu.
+2. Scanner l'environnement en effectuant de lents mouvements avec le smartphone (Zone bleue).
+3. Tapoter sur une zone de détection (grille) pour instancier le plateau de jeu (Zone rouge).
+4. Présenter l'image cible devant la caméra pour faire apparaître le chat (Il faut s'approcher pour que l'image marqueur prenne presque tout l'écran).
+5. Le chat apparait alors sur le plateau virtuel.
+6. Utiliser le joystick sur l'écran pour diriger et animer le chat sur le tapis (l'animation concerne uniquement des mouvement de tête, les pates ne sont pas animées).
